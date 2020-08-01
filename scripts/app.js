@@ -13,18 +13,24 @@ $(document).on("ready", function(){
   // initial request to display gifs on page load
   requestGifs();
 
-  $(".btn").click(function(e){
+  // search button
+  $("#search-btn").click(function(e){
     e.preventDefault();
-    // first empty the existing gifs
+    // empty the existing gifs
     $(".gif-gallery").empty();
     requestGifs();
   });
 
+  // load more button
+  $("#load-more").click(function() {
+    var newOffset = parseInt($("form [name='offset']").val()) + 25;
+    $("form [name='offset']").val(newOffset);
+    requestGifs();
+  });
+
   function onSuccess(json) {
-    console.log(json);
     for(var x=0; x < json.data.length; x++) {
-      console.log("gif url from json: " + json.data[x].images.original.url);
-      $(".gif-gallery").append(`<img src="${json.data[x].images.original.url}" width="100" height="100">`);
+      $(".gif-gallery").append(`<img src="${json.data[x].images.original.url}" width="120" height="120">`);
     }
   }
 

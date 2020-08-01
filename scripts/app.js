@@ -1,18 +1,23 @@
 $(document).on("ready", function(){
 
-  $.ajax({
+  function requestGifs() {
+    $.ajax({
       method: "GET",
       url: "http://api.giphy.com/v1/gifs/search",
       data: $("form").serialize(),
       success: onSuccess,
       error: onError
-  });
+    });
+  }
+
+  // initial request to display gifs on page load
+  requestGifs();
 
   $(".btn").click(function(e){
-    console.log("button clicked");
     e.preventDefault();
-    var q = $("form").serialize();
-    console.log("form data: ", q);
+    // first empty the existing gifs
+    $(".gif-gallery").empty();
+    requestGifs();
   });
 
   function onSuccess(json) {

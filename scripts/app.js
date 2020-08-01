@@ -2,7 +2,7 @@ $(document).on("ready", function(){
 
   $.ajax({
       method: "GET",
-      url: "http://api.giphy.com/v1/gifs/search?",
+      url: "http://api.giphy.com/v1/gifs/search",
       data: $("form").serialize(),
       success: onSuccess,
       error: onError
@@ -17,6 +17,10 @@ $(document).on("ready", function(){
 
   function onSuccess(json) {
     console.log(json);
+    for(var x=0; x < json.data.length; x++) {
+      console.log("gif url from json: " + json.data[x].images.original.url);
+      $(".gif-gallery").append(`<img src="${json.data[x].images.original.url}" width="100" height="100">`);
+    }
   }
 
   function onError(xhr, status, errorThrown) {

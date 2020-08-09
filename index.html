@@ -15,23 +15,23 @@
 		<script src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
     <script src="scripts/app.js"></script>
 
-		<title>giffy</title>
+		<title>Gif Me!</title>
 
 	</head>
 	<body>
-    <div class="container">
-			<h1 class="text-center">giffy</h1>
+    <div class="container" id="main-container">
+			<h1 class="text-center" id="title">Gif Me!</h1>
 			<div class="row">
 				<div class="col-sm-4">
 					<form class="form-inline">
-						<label>Search Gifs</label>
-						<input type="text" class="form-control gif-input" name="q" value="cats" placeholder="search gifs">
+						<label id="search-title">Search Gifs</label>
+						<input type="text" class="form-control gif-input" id="search-field" name="q" value="cats" placeholder="search gifs">
 						<input type="hidden" name="offset" value="0">
 						<input type="hidden" name="api_key" value="dc6zaTOxFJmzC">
 						<input type="submit" value="Go!" id="search-btn" class="btn btn-primary">
 					</form>
 				</div>
-				<div class="col-sm-8">
+				<div class="col-sm-8" id="gif-section">
 					<div class="gif-gallery"></div>
 					<button id="load-more" type="button" class="btn btn-primary">Load More</button>
 				</div>
